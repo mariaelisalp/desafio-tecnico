@@ -165,7 +165,7 @@ npm test
     "solicitation": "Estou tendo erro no login ao tentar acessar o sistema",
     "channel": "SUPORTE_TECNICO",
     "status": "EM_ABERTO",
-    "priority": 1,
+    "priority": 2,
     "userId": 1,
     "createdAt": "2024-01-15T10:30:00.000Z",
     "updatedAt": "2024-01-15T10:30:00.000Z",
