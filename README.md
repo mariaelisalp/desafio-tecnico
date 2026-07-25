@@ -105,12 +105,12 @@ npm run dev
 | `GET` | `/users` | Lista usuários ativos. |
 | `GET` | `/users/:id` | Busca um usuário. |
 | `PUT` | `/users/:id` | Atualiza um usuário. |
-| `DELETE` | `/users/:id` | Remove um usuário logicamente. |
+| `DELETE` | `/users/:id` | Remove um usuário. |
 | `POST` | `/tickets` | Cria e classifica um ticket. |
 | `GET` | `/tickets` | Lista tickets ativos. |
 | `GET` | `/tickets/:id` | Busca um ticket. |
 | `PUT` | `/tickets/:id` | Atualiza um ticket. |
-| `DELETE` | `/tickets/:id` | Remove um ticket logicamente. |
+| `DELETE` | `/tickets/:id` | Remove um ticket. |
 | `GET` | `/logs` | Exibe os logs registrados. |
 | `GET` | `/health` | Retorna o status da API. |
 
@@ -119,8 +119,6 @@ npm run dev
 ## Testes
 
 ### Execução com Docker Compose
-
-Caso a aplicação esteja sendo executada em containers, os testes devem ser executados dentro do container da API:
 
 ```bash
 docker exec -it ticket-classification-api npm test
