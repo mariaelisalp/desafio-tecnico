@@ -1,0 +1,41 @@
+name: express-api
+services:
+  api:
+    build: .
+    container_name: ticket-classification-api
+
+    ports:
+      - "3000:3000"
+
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/app_db?schema=public
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+
+    depends_on:
+      - postgres
+
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: postgres-db
+
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: app_db
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

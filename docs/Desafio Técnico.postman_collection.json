@@ -1,0 +1,634 @@
+{
+  "info": {
+    "_postman_id": "8190793a-c9d8-4fb5-8c0c-8007641f8128",
+    "name": "Contato Seguro - Desafio Técnico",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "56875635",
+    "_collection_link": "https://go.postman.co/collection/56875635-8190793a-c9d8-4fb5-8c0c-8007641f8128?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"José da Silva\",\r\n    \"email\": \"josedasilva@gmail.com\",\r\n    \"password\" : \"Q7!mX9@vLp#2Rs$8Hk\",\r\n    \"phone\": \"43998562365\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/users",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "users"
+              ]
+            },
+            "description": "Cria um novo usuário no sistema.\n\n### Método\n\n`POST`\n\n### URL\n\n```\nhttp://localhost:3000/users\n\n ```\n\n## Corpo da Requisição\n\nO corpo da requisição deve ser enviado como JSON (`application/json`) com os seguintes campos:\n\n| Campo | Tipo | Obrigatório | Descrição |\n| --- | --- | --- | --- |\n| `name` | string | Sim | Nome do usuário |\n| `email` | string | Sim | Endereço de e-mail do usuário (deve ser único) |\n| `password` | string | Sim | Senha do usuário (deve ser conter no mínimo 8 caracteres) |\n| `phone` | string | Não | Número de telefone do usuário |\n\n### Exemplo de Corpo da Requisição\n\n``` json\n{\n    \"name\": \"José da Silva\",\n    \"email\": \"josedasilva@gmail.com\",\n    \"password\": \"Q7!mX9@vLp#2Rs$8Hk\",\n    \"phone\": \"43998562365\"\n}\n\n ```\n\n## Respostas\n\n- **201 Created** – Usuário criado com sucesso. Retorna o objeto do usuário criado.\n    \n- **400 Bad Request** – Campos ausentes ou inválidos no corpo da requisição, já existe um usuário com o e-mail informado.\n    \n\n## Exemplo de Resposta\n\n``` json\n{\n    \"success\": true,\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"José da Silva\",\n        \"email\": \"josedasilva@gmail.com\",\n        \"phone\": \"43998562365\",\n        \"createdAt\": \"2024-01-15T10:30:00.000Z\",\n        \"updatedAt\": \"2024-01-15T10:30:00.000Z\",\n        \"deletedAt\": null\n    }\n}\n\n ```"
+          },
+          "response": [
+            {
+              "name": "create",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"José da Silva\",\r\n    \"email\": \"josedasilva@gmail.com\",\r\n    \"password\" : \"Q7!mX9@vLp#2Rs$8Hk\",\r\n    \"phone\": \"43998562365\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/users",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "users"
+                  ]
+                }
+              },
+              "_postman_previewlanguage": null,
+              "header": null,
+              "cookie": [],
+              "body": null
+            }
+          ]
+        },
+        {
+          "name": "findUser",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"José da Silva\",\r\n    \"email\": \"josedasilva@gmail.com\",\r\n    \"password\" : \"Q7!mX9@vLp#2Rs$8Hk\",\r\n    \"phone\": \"43998562365\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/users/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "users",
+                "1"
+              ]
+            },
+            "description": "Recupera um usuário pelo seu ID.\n\n### Método\n\n`GET`\n\n### URL\n\n```\nhttp://localhost:3000/users/:id\n\n ```\n\n## Respostas\n\n- **200 OK** – Retorna o objeto do usuário.\n    \n- **404 Not Found** – Usuário não encontrado.\n\n## Exemplo de Resposta de Sucesso\n\n``` json\n{\n    \"success\": true,\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"José da Silva\",\n        \"email\": \"josedasilva@gmail.com\",\n        \"phone\": \"43998562365\",\n        \"createdAt\": \"2024-01-15T10:30:00.000Z\",\n        \"updatedAt\": \"2024-01-15T10:30:00.000Z\",\n        \"deletedAt\": null\n    }\n}\n```"
+          },
+          "response": [
+            {
+              "name": "findUser",
+              "originalRequest": {
+                "method": "GET",
+                "header": []
+              },
+              "_postman_previewlanguage": null,
+              "header": null,
+              "cookie": [],
+              "body": null
+            }
+          ]
+        },
+        {
+          "name": "findAll",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"José da Silva\",\r\n    \"email\": \"josedasilva@gmail.com\",\r\n    \"password\" : \"Q7!mX9@vLp#2Rs$8Hk\",\r\n    \"phone\": \"43998562365\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/users",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "users"
+              ]
+            },
+            "description": "Retorna a lista de todos os usuários cadastrados no sistema.\n\n### Método\n\n`GET`\n\n### URL\n\n```\nhttp://localhost:3000/users\n\n ```\n\n## Respostas\n\n- **200 OK** – Retorna um array com todos os usuários cadastrados.\n    \n- **404 Not Found**\n\n## Exemplo de Resposta de Sucesso\n\n``` json\n{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"José da Silva\",\n            \"email\": \"josedasilva@gmail.com\",\n            \"phone\": \"43998562365\",\n            \"createdAt\": \"2024-01-15T10:30:00.000Z\",\n            \"updatedAt\": \"2024-01-15T10:30:00.000Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Maria Souza\",\n            \"email\": \"mariasouza@gmail.com\",\n            \"phone\": null,\n            \"createdAt\": \"2024-01-16T08:00:00.000Z\",\n            \"updatedAt\": \"2024-01-16T08:00:00.000Z\",\n            \"deletedAt\": null\n        }\n    ]\n}\n```"
+          },
+          "response": [
+            {
+              "name": "findAll",
+              "originalRequest": {
+                "method": "GET",
+                "header": []
+              },
+              "_postman_previewlanguage": null,
+              "header": null,
+              "cookie": [],
+              "body": null
+            }
+          ]
+        },
+        {
+          "name": "update",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"José da Silva Ferraz\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/users/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "users",
+                "1"
+              ]
+            },
+            "description": "Atualiza os dados de um usuário existente pelo seu ID.\n\n### Método\n\n`PUT`\n\n### URL\n\n```\nhttp://localhost:3000/users/:id\n```\n\n## Corpo da Requisição\n\nO corpo da requisição deve ser enviado como JSON (`application/json`). Todos os campos são opcionais — envie apenas os campos que deseja atualizar:\n\n| Campo | Tipo | Obrigatório | Descrição |\n| --- | --- | --- | --- |\n| `name` | string | Não | Novo nome do usuário |\n| `email` | string | Não | Novo endereço de e-mail do usuário (deve ser único) |\n| `password` | string | Não | Nova senha do usuário (deve conter no mínimo 8 caracteres) |\n| `phone` | string | Não | Novo número de telefone do usuário |\n\n### Exemplo de Corpo da Requisição\n\n``` json\n{\n    \"name\": \"José da Silva Ferraz\"\n}\n```\n\n## Respostas\n\n- **200 OK** – Usuário atualizado com sucesso. Retorna o objeto do usuário atualizado.\n    \n- **400 Bad Request** – Campos inválidos no corpo da requisição.\n    \n- **404 Not Found** – Usuário não encontrado.\n\n## Exemplo de Resposta de Sucesso\n\n``` json\n{\n    \"success\": true,\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"José da Silva Ferraz\",\n        \"email\": \"josedasilva@gmail.com\",\n        \"phone\": \"43998562365\",\n        \"createdAt\": \"2024-01-15T10:30:00.000Z\",\n        \"updatedAt\": \"2024-01-20T14:00:00.000Z\",\n        \"deletedAt\": null\n    }\n}\n```"
+          },
+          "response": [
+            {
+              "name": "update",
+              "originalRequest": {
+                "method": "GET",
+                "header": []
+              },
+              "_postman_previewlanguage": null,
+              "header": null,
+              "cookie": [],
+              "body": null
+            }
+          ]
+        },
+        {
+          "name": "delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/users/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "users",
+                "1"
+              ]
+            },
+            "description": "Remove um usuário do sistema pelo seu ID.\n\n### Método\n\n`DELETE`\n\n### URL\n\n```\nhttp://localhost:3000/users/:id\n```\n\n## Respostas\n\n- **200 OK** – Usuário removido com sucesso.\n    \n- **404 Not Found** – Usuário não encontrado.\n\n## Exemplo de Resposta de Sucesso\n\n``` json\n{\n    \"success\": true,\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"José da Silva\",\n        \"email\": \"josedasilva@gmail.com\",\n        \"phone\": \"43998562365\",\n        \"createdAt\": \"2024-01-15T10:30:00.000Z\",\n        \"updatedAt\": \"2024-01-20T14:00:00.000Z\",\n        \"deletedAt\": \"2024-01-21T09:00:00.000Z\"\n    }\n}\n```"
+          },
+          "response": [
+            {
+              "name": "delete",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:3000/users/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "users",
+                    "1"
+                  ]
+                }
+              },
+              "_postman_previewlanguage": null,
+              "header": null,
+              "cookie": [],
+              "body": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tickets",
+      "item": [
+        {
+          "name": "create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"solicitation\": \"Estou tendo erro no login ao tentar acessar o sistema\",\r\n    \"userId\": 1\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/tickets",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "tickets"
+              ]
+            },
+            "description": "Cria um novo ticket no sistema e classifica em um canal de atendimento acordo com a solicitação, definindo uma prioridade.\n\n### Método\n\n`POST`\n\n### URL\n\n```\nhttp://localhost:3000/tickets\n\n ```\n\n## Corpo da Requisição\n\nO corpo da requisição deve ser enviado como JSON (`application/json`) com os seguintes campos:\n\n| Campo | Tipo | Obrigatório | Descrição |\n| --- | --- | --- | --- |\n| `solicitation` | string | Sim | Descrição da solicitação ou problema relatado |\n| `userId` | number | Sim | ID do usuário que está abrindo o ticket |\n\n### Exemplo de Corpo da Requisição\n\n``` json\n{\n    \"solicitation\": \"Estou tendo erro no login ao tentar acessar o sistema\",\n    \"userId\": 1\n}\n\n ```\n\n## Respostas\n\n- **201 Created** – Ticket criado com sucesso. Retorna o objeto do ticket criado.\n    \n- **400 Bad Request** – Campos ausentes ou inválidos no corpo da requisição.\n    \n- **400 Bad Request** – Texto da solicitação muito curto.\n    \n- **404 Not Found** – Usuário com o `userId` informado não encontrado.\n\n## Exemplo de Resposta de Sucesso\n\n``` json\n{\n    \"success\": true,\n    \"data\": {\n        \"id\": 1,\n        \"solicitation\": \"Estou tendo erro no login ao tentar acessar o sistema\",\n        \"channel\": \"SUPORTE_TECNICO\",\n        \"status\": \"EM_ABERTO\",\n        \"priority\": 1,\n        \"userId\": 1,\n        \"createdAt\": \"2024-01-15T10:30:00.000Z\",\n        \"updatedAt\": \"2024-01-15T10:30:00.000Z\",\n        \"deletedAt\": null\n    }\n}\n```"
+          },
+          "response": [
+            {
+              "name": "create",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"solicitation\": \"Estou tendo erro no login ao tentar acessar o sistema\",\r\n    \"userId\": 1\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/tickets",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "tickets"
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "",
+              "header": [],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": ""
+            },
+            {
+              "name": "create",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"solicitation\": \"Tenho um problema que não sei resolver\",\r\n    \"userId\": 6\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/tickets",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "tickets"
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "",
+              "header": [],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": ""
+            }
+          ]
+        },
+        {
+          "name": "findTicket",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/tickets/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "tickets",
+                "1"
+              ]
+            },
+            "description": "Recupera um ticket pelo seu ID.\n\n### Método\n\n`GET`\n\n### URL\n\n```\nhttp://localhost:3000/tickets/:id\n```\n\n## Respostas\n\n- **200 OK** – Retorna o objeto do ticket.\n    \n- **404 Not Found** – Ticket não encontrado.\n\n## Exemplo de Resposta de Sucesso\n\n``` json\n{\n    \"success\": true,\n    \"data\": {\n        \"id\": 1,\n        \"solicitation\": \"Estou tendo erro no login ao tentar acessar o sistema\",\n        \"channel\": \"SUPORTE_TECNICO\",\n        \"status\": \"EM_ATENDIMENTO\",\n        \"priority\": 1,\n        \"userId\": 1,\n        \"createdAt\": \"2024-01-15T10:30:00.000Z\",\n        \"updatedAt\": \"2024-01-15T10:30:00.000Z\",\n        \"deletedAt\": null\n    }\n}\n```"
+          },
+          "response": [
+            {
+              "name": "findTicket",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:3000/tickets/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "tickets",
+                    "1"
+                  ]
+                }
+              },
+              "_postman_previewlanguage": null,
+              "header": null,
+              "cookie": [],
+              "body": null
+            }
+          ]
+        },
+        {
+          "name": "findAll",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"José da Silva\",\r\n    \"email\": \"josedasilva@gmail.com\",\r\n    \"password\" : \"Q7!mX9@vLp#2Rs$8Hk\",\r\n    \"phone\": \"43998562365\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/tickets",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "tickets"
+              ]
+            },
+            "description": "Retorna a lista de todos os tickets cadastrados no sistema.\n\n### Método\n\n`GET`\n\n### URL\n\n```\nhttp://localhost:3000/tickets\n```\n\n## Respostas\n\n- **200 OK** – Retorna um array com todos os tickets cadastrados.\n\n## Exemplo de Resposta de Sucesso\n\n``` json\n{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"solicitation\": \"Estou tendo erro no login ao tentar acessar o sistema\",\n            \"channel\": \"SUPORTE_TECNICO\",\n            \"status\": \"EM_ATENDIMENTO\",\n            \"priority\": 1,\n            \"userId\": 1,\n            \"createdAt\": \"2024-01-15T10:30:00.000Z\",\n            \"updatedAt\": \"2024-01-15T10:30:00.000Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": 2,\n            \"solicitation\": \"Preciso de ajuda com minha fatura\",\n            \"channel\": \"FINANCEIRO\",\n            \"status\": \"EM_ABERTO\",\n            \"priority\": 2,\n            \"userId\": 2,\n            \"createdAt\": \"2024-01-16T08:00:00.000Z\",\n            \"updatedAt\": \"2024-01-16T08:00:00.000Z\",\n            \"deletedAt\": null\n        }\n    ]\n}\n```"
+          },
+          "response": [
+            {
+              "name": "findAll",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"status\": \"EM_ATENDIMENTO\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/tickets/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "tickets",
+                    "1"
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "",
+              "header": [],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": ""
+            }
+          ]
+        },
+        {
+          "name": "update",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"status\": \"EM_ATENDIMENTO\",\r\n    \"userId\": 1\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/tickets/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "tickets",
+                "1"
+              ]
+            },
+            "description": "Atualiza os dados de um ticket existente pelo seu ID.\n\n### Método\n\n`PUT`\n\n### URL\n\n```\nhttp://localhost:3000/tickets/:id\n\n ```\n\n## Corpo da Requisição\n\nO corpo da requisição deve ser enviado como JSON (`application/json`). Todos os campos são opcionais — envie apenas os campos que deseja atualizar:\n\n| Campo | Tipo | Obrigatório | Tipos Aceitos | Descrição |\n| --- | --- | --- | --- | --- |\n| `status` | string | Não | `EM_ABERTO` `CLASSIFICADO` `EM_ATENDIMENTO` `REVISAO_MANUAL` `CONCLUIDO` | Novo status do ticket |\n| `channel` | string | Não | `OUVIDORIA` `SAC` `SUPORTE_TECNICO` `FINANCEIRO` `FORA_DO_ESCOPO` | Novo canal de atendimento |\n| `priority` | number | Não | `1` `2` `3` | Prioridade do ticket (1 = Alta, 2 = Média, 3 = Baixa) |\n\n### Exemplo de Corpo da Requisição\n\n``` json\n{\n    \"status\": \"EM_ATENDIMENTO\"\n}\n\n ```\n\n## Respostas\n\n- **200 OK** – Ticket atualizado com sucesso. Retorna o objeto do ticket atualizado.\n    \n- **400 Bad Request** – Campos inválidos no corpo da requisição.\n    \n- **404 Not Found** – Ticket não encontrado.\n\n## Exemplo de Resposta de Sucesso\n\n``` json\n{\n    \"success\": true,\n    \"data\": {\n        \"id\": 1,\n        \"solicitation\": \"Estou tendo erro no login ao tentar acessar o sistema\",\n        \"channel\": \"SUPORTE_TECNICO\",\n        \"status\": \"EM_ATENDIMENTO\",\n        \"priority\": 1,\n        \"userId\": 1,\n        \"createdAt\": \"2024-01-15T10:30:00.000Z\",\n        \"updatedAt\": \"2024-01-20T14:00:00.000Z\",\n        \"deletedAt\": null\n    }\n}\n```"
+          },
+          "response": [
+            {
+              "name": "update",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"status\": \"EM_ATENDIMENTO\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/tickets/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "tickets",
+                    "1"
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "",
+              "header": [],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": ""
+            }
+          ]
+        },
+        {
+          "name": "delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/tickets/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "tickets",
+                "1"
+              ]
+            },
+            "description": "Remove um ticket do sistema pelo seu ID.\n\n### Método\n\n`DELETE`\n\n### URL\n\n```\nhttp://localhost:3000/tickets/:id\n\n ```\n\n## Respostas\n\n- **200 OK** – Ticket removido com sucesso.\n    \n- **404 Not Found** – Ticket não encontrado.\n    \n\n## Exemplo de Resposta\n\n``` json\n{\n    \"success\": true,\n    \"data\": {\n        \"id\": 1,\n        \"solicitation\": \"Estou tendo erro no login ao tentar acessar o sistema\",\n        \"channel\": \"SUPORTE_TECNICO\",\n        \"status\": \"CONCLUIDO\",\n        \"priority\": 1,\n        \"userId\": 1,\n        \"createdAt\": \"2024-01-15T10:30:00.000Z\",\n        \"updatedAt\": \"2024-01-21T09:00:00.000Z\",\n        \"deletedAt\": \"2024-01-21T09:00:00.000Z\"\n    }\n}\n\n ```"
+          },
+          "response": [
+            {
+              "name": "delete",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:3000/tickets/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "tickets",
+                    "1"
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "",
+              "header": [],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Utils",
+      "item": [
+        {
+          "name": "Health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/health",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "health"
+              ]
+            },
+            "description": "Verifica se a aplicação está em execução e respondendo corretamente.\n\n### Método\n\n`GET`\n\n### URL\n\n```\nhttp://localhost:3000/health\n\n ```\n\n## Respostas\n\n- **200 OK** – A aplicação está saudável e em execução."
+          },
+          "response": []
+        },
+        {
+          "name": "Logs",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/logs",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "logs"
+              ]
+            },
+            "description": "Retorna logs armazenados.\n\n### Método\n\n`GET`\n\n### URL\n\n```\nhttp://localhost:3000/logs\n\n ```\n\n## Respostas\n\n- **200 OK** – Lista de logs armarzenados.\n    \n- **404 Not Found** - Lista de logs vazia.\n    \n\n## Exemplo de Resposta\n\n``` json\n{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"entityType\": \"USER\",\n            \"entityId\": 1,\n            \"action\": \"CREATE\",\n            \"observation\": null,\n            \"createdAt\": \"2026-07-25T00:49:44.083Z\",\n            \"updatedAt\": \"2026-07-25T00:49:44.083Z\"\n        },\n        {\n            \"id\": 2,\n            \"entityType\": \"TICKET\",\n            \"entityId\": 1,\n            \"action\": \"CREATE\",\n            \"observation\": null,\n            \"createdAt\": \"2026-07-25T00:54:52.160Z\",\n            \"updatedAt\": \"2026-07-25T00:54:52.160Z\"\n        },\n        {\n            \"id\": 3,\n            \"entityType\": \"TICKET\",\n            \"entityId\": 1,\n            \"action\": \"TICKET_CLASSIFICATION\",\n            \"observation\": \"Ticket classificado manualmente\",\n            \"createdAt\": \"2026-07-25T00:54:52.160Z\",\n            \"updatedAt\": \"2026-07-25T00:54:52.160Z\"\n        },\n    ]\n}\n\n ```"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

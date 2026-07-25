@@ -1,0 +1,83 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  phone     String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+
+
+  tickets   Ticket[]
+}
+
+model Ticket {
+  id           Int      @id @default(autoincrement())
+  solicitation String
+  channel      TicketChannel
+  status       TicketStatus
+  priority     Int
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  deletedAt    DateTime?
+
+
+  userId       Int
+  user         User     @relation(fields: [userId], references: [id])
+}
+
+model Log {
+  id          Int        @id @default(autoincrement())
+  entityType  EntityType
+  entityId    Int
+  action      LogAction
+  observation String?
+
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+}
+
+enum TicketStatus {
+  EM_ABERTO
+  CLASSIFICADO
+  EM_ATENDIMENTO
+  REVISAO_MANUAL
+  CONCLUIDO
+}
+
+enum TicketChannel {
+  OUVIDORIA
+  SAC
+  SUPORTE_TECNICO
+  FINANCEIRO
+  FORA_DO_ESCOPO
+}
+
+enum EntityType {
+  USER
+  TICKET
+}
+
+enum LogAction {
+  CREATE
+  UPDATE
+  DELETE
+  TICKET_CLASSIFICATION
+}
