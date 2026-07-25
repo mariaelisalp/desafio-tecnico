@@ -80,8 +80,6 @@ DATABASE_URL="postgresql://postgres:postgres@localhost:5432/app_db?schema=public
 GEMINI_API_KEY="sua-chave-gemini"
 ```
 
-> Ajuste o `DATABASE_URL` caso o PostgreSQL esteja sendo executado em outro host, porta ou banco.
-
 3. Gere o Prisma Client e aplique as migrations:
 
 ```bash
